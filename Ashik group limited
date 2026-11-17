@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<title>AGL | Ashik Group Limited</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ background:#080808;color:#fff;
+ font-family:Inter,Arial,sans-serif;
+ line-height:1.6;
+}
+:root{--gold:#d6ad60;--muted:#aaa}
+a{text-decoration:none;color:inherit}
+header{
+ position:sticky;top:0;z-index:10;
+ background:#080808ed;border-bottom:1px solid #292929;
+ padding:17px 7%;
+ display:flex;align-items:center;justify-content:space-between;
+}
+.logo{font-size:23px;font-weight:800;letter-spacing:2px}
+.logo span{color:var(--gold)}
+nav{display:flex;gap:25px;align-items:center}
+nav a{font-size:13px;color:#ddd}
+nav a:hover{color:var(--gold)}
+.menu{display:none;background:none;border:0;color:white;font-size:26px}
+.hero{
+ min-height:660px;padding:100px 8%;
+ display:flex;flex-direction:column;justify-content:center;
+ background:radial-gradient(ellipse at 80% 40%,#49351b55,transparent 45%),
+ linear-gradient(120deg,#080808,#15110b);
+}
+.tag{color:var(--gold);letter-spacing:4px;font-size:12px;font-weight:700}
+.hero h1{
+ font-family:'Playfair Display',serif;
+ font-size:clamp(43px,8vw,85px);
+ line-height:1.13;margin:25px 0;
+ max-width:850px;
+}
+.hero h1 span{color:var(--gold)}
+.hero p{max-width:580px;color:#bbb;font-size:16px}
+.buttons{display:flex;gap:15px;margin-top:35px;flex-wrap:wrap}
+.btn{
+ padding:14px 25px;border:1px solid var(--gold);
+ font-size:13px;font-weight:700;transition:.3s;
+}
+.primary{background:var(--gold);color:#080808}
+.btn:hover{background:#fff;color:#080808;border-color:#fff}
+section{padding:90px 8%}
+.heading{text-align:center;margin-bottom:45px}
+.heading small{color:var(--gold);letter-spacing:3px}
+.heading h2{font-size:clamp(30px,5vw,43px);margin:10px}
+.heading p{color:var(--muted);max-width:650px;margin:auto}
+.about{
+ display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;
+}
+.about-box{
+ border:1px solid #4a3b24;padding:35px;
+ background:linear-gradient(145deg,#1b1710,#0c0c0c);
+}
+.about-box .big{font-size:65px;color:var(--gold);font-weight:800}
+.about h2{font-family:'Playfair Display',serif;font-size:39px;margin-bottom:20px}
+.about p,.description{color:var(--muted)}
+.services{background:#101010}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{
+ padding:30px;border:1px solid #303030;background:#141414;
+ transition:.3s;
+}
+.card:hover{border-color:var(--gold);transform:translateY(-5px)}
+.card .icon{font-size:32px;margin-bottom:20px}
+.card h3{color:var(--gold);margin-bottom:12px}
+.card p{font-size:14px;color:var(--muted)}
+.vision{
+ text-align:center;
+ background:linear-gradient(120deg,#17120a,#080808);
+}
+.vision h2{font-family:'Playfair Display',serif;font-size:42px}
+.vision p{max-width:720px;margin:20px auto;color:#bbb}
+.investor{
+ text-align:center;
+ border-top:1px solid #302719;
+ border-bottom:1px solid #302719;
+}
+.investor h2{font-size:37px;margin:15px}
+.investor p{color:var(--muted);max-width:650px;margin:0 auto 25px}
+.contact{background:#101010}
+.contact-box{
+ max-width:700px;margin:auto;text-align:center;
+ border:1px solid #393024;padding:40px;
+}
+.contact-box h2{font-size:35px;margin-bottom:15px}
+.contact-box p{color:var(--muted)}
+.social{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:25px}
+.social a{padding:10px 18px;border:1px solid #555;font-size:13px}
+.social a:hover{border-color:var(--gold);color:var(--gold)}
+footer{
+ padding:30px 8%;text-align:center;
+ border-top:1px solid #292929;color:#888;font-size:12px;
+}
+footer strong{color:var(--gold)}
+@media(max-width:750px){
+ header{padding:15px 5%}
+ .menu{display:block}
+ nav{
+ display:none;position:absolute;top:65px;left:0;width:100%;
+ background:#101010;padding:25px;flex-direction:column;
+ align-items:flex-start;border-bottom:1px solid #333;
+ }
+ nav.open{display:flex}
+ .hero{min-height:570px;padding:80px 6%}
+ section{padding:65px 6%}
+ .about{grid-template-columns:1fr;gap:30px}
+ .cards{grid-template-columns:1fr}
+ .about h2{font-size:32px}
+ .contact-box{padding:25px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <a href="#home" class="logo">A<span>G</span>L.</a>
+ <button class="menu" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+ <nav id="nav">
+  <a href="#home" onclick="closeMenu()">Home</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#business" onclick="closeMenu()">Business</a>
+  <a href="#vision" onclick="closeMenu()">Vision</a>
+  <a href="#investors" onclick="closeMenu()">Investors</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+ </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="tag">WELCOME TO AGL</div>
+ <h1>Building The <span>Future</span><br>With Vision.</h1>
+ <p>
+  Welcome to Ashik Group Limited. We believe in innovation,
+  business opportunities and building a better future through
+  smart ideas and sustainable growth.
+ </p>
+ <div class="buttons">
+  <a href="#about" class="btn primary">DISCOVER AGL →</a>
+  <a href="#contact" class="btn">CONTACT US</a>
+ </div>
+</section>
+
+<section id="about">
+ <div class="about">
+  <div>
+   <div class="tag">WHO WE ARE</div>
+   <h2>About Ashik Group Limited</h2>
+   <p class="description">
+    AGL is a business venture built around ambition, innovation
+    and long-term growth. Our goal is to explore opportunities
+    in e-commerce, retail and modern business services.
+    We aim to create value for customers and build a trusted brand.
+   </p>
+   <br>
+   <a href="#business" class="btn primary">EXPLORE OUR BUSINESS →</a>
+  </div>
+  <div class="about-box">
+   <div class="big">AGL</div>
+   <h3>Ashik Group Limited</h3>
+   <p class="description">Think Big. Build Smart. Grow Together.</p>
+  </div>
+ </div>
+</section>
+
+<section class="services" id="business">
+ <div class="heading">
+  <small>WHAT WE DO</small>
+  <h2>Our Business Areas</h2>
+  <p>Exploring opportunities across modern industries.</p>
+ </div>
+ <div class="cards">
+  <div class="card">
+   <div class="icon">🛍️</div>
+   <h3>E-Commerce</h3>
+   <p>Building an online shopping experience with a focus on
+   convenience, product quality and customer satisfaction.</p>
+  </div>
+  <div class="card">
+   <div class="icon">🏬</div>
+   <h3>Retail Business</h3>
+   <p>Exploring physical retail opportunities and customer-focused
+   business solutions.</p>
+  </div>
+  <div class="card">
+   <div class="icon">💡</div>
+   <h3>Digital Innovation</h3>
+   <p>Using technology and creative ideas to develop modern
+   business opportunities.</p>
+  </div>
+ </div>
+</section>
+
+<section class="vision" id="vision">
+ <div class="tag">OUR VISION & MISSION</div>
+ <h2>Dream Big. Build The Future.</h2>
+ <p>
+  Our vision is to build a trusted and innovative business group
+  that creates opportunities, delivers value and grows with
+  customers and partners.
+ </p>
+ <a href="#contact" class="btn primary">LET'S CONNECT →</a>
+</section>
+
+<section class="investor" id="investors">
+ <div class="tag">PARTNERSHIP</div>
+ <h2>Grow With Our Vision</h2>
+ <p>
+  Interested in business collaboration or exploring future
+  opportunities with AGL? Connect with us to start a conversation.
+ </p>
+ <a href="#contact" class="btn primary">BUSINESS ENQUIRY →</a>
+ <p style="font-size:11px;margin-top:20px">
+  This section is for general business enquiries, not a public
+  investment or securities offering.
+ </p>
+</section>
+
+<section class="contact" id="contact">
+ <div class="contact-box">
+  <div class="tag">GET IN TOUCH</div>
+  <h2>Let's Connect</h2>
+  <p>Have a business idea, question or collaboration proposal?
+  Contact the AGL team.</p>
+  <div class="social">
+   <!-- Replace these links with your actual profiles -->
+   <a href="https://instagram.com/" target="_blank">Instagram</a>
+   <a href="https://facebook.com/" target="_blank">Facebook</a>
+   <a href="https://tiktok.com/" target="_blank">TikTok</a>
+   <a href="mailto:YOUR_EMAIL@gmail.com">Email Us</a>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <strong>AGL | ASHIK GROUP LIMITED</strong>
+ <p>© 2026 AGL. All Rights Reserved.</p>
+ <p>Think Big • Build Smart • Grow Together</p>
+</footer>
+
+<script>
+function toggleMenu(){
+ document.getElementById('nav').classList.toggle('open');
+}
+function closeMenu(){
+ document.getElementById('nav').classList.remove('open');
+}
+</script>
+
+</body>
+</html>
